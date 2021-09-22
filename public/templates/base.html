@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="/static/css/style.css" type="text/css" rel="stylesheet">
+    <title>Gaffclant</title>
+</head>
+<body>
+<div class="navbar">
+    <nav>
+        <ul>
+            <li><a
+                    {% if index %}
+                    class="active"
+                    {% endif %}
+                    href="/#">Home</a></li>
+            <li><a href="https://github.com/gaffclant">Github</a></li>
+            <li><a href="mailto:gaffclant@gmail.com">Contact me</a></li>
+            <li style="float:right"><a
+                    {% if about %}
+                    class="active"
+                    {% endif %}
+                    href="about">About me</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="header">
+    <h1>{% block head%}{% endblock %}</h1>
+    <h4>{% block sub%}{% endblock %}</h4>
+</div>
+<div class="content">
+    {% block content %}
+    {% endblock %}
+</div>
+
+
+</body>
+</html>
