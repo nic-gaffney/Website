@@ -5,11 +5,38 @@ body {
     background-color: #444;
 }
 
+footer ul {
+    margin: 0;
+    padding: 0;
+}
+
+footer {
+  width: 100%;
+  bottom: 0;
+  text-align: center;
+  padding: 3px;
+  background-color: #222;
+  color: white;
+  float: bottom;
+}
+
+footer li {
+
+    overflow: hidden;
+    list-style-type: none;
+}
+
+
+footer a {
+    text-decoration: none;
+    color: #555;
+}
+
 .active {
   background-color: #F20E23;
 }
 
-ul {
+nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -20,11 +47,11 @@ ul {
   width: 100%;
 }
 
-li {
+nav li {
   float: left;
 }
 
-li a {
+nav li a {
   display: block;
   color: white;
   text-align: center;
@@ -32,8 +59,12 @@ li a {
   text-decoration: none;
 }
 
-li a:hover {
+nav li a:hover {
   background-color: #111;
+}
+
+footer li a:hover {
+  color: #444;
 }
 
 .header {
