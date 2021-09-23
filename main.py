@@ -38,29 +38,6 @@ db.connect()
 if not db.get_tables([Post]):
     db.create_tables([Post])
 
-# Post.create(
-#     title="Not a test",
-#     text="lorem ipsum samet",
-# )
-# Post.create(
-#     title="Post 2",
-#     text="Lorem lmao",
-# )
-# Post.create(
-#     title="Friends are mean",
-#     text="Hayden is a bitch",
-# )
-# Post.create(
-#     title="Linux is cool",
-#     text="Insert rant here",
-# )
-# Post.create(
-#     title="How to code",
-#     text="gamer moment am i right?",
-# )
-
-blog = Post.select().order_by(Post.date.desc())
-
 
 class Website(object):
     @cherrypy.expose
@@ -69,7 +46,12 @@ class Website(object):
         template = env.get_template("html/index.html")
         motdJson = requests.get("https://xkcd.com/info.0.json").json()
         motd = motdJson.get("img")
-        return template.render(index=True, blog=preview, motd=motd)
+        return template.render(index=True,
+                               blog=preview,
+                               motd=motd,
+                               title="Gaffclant",
+                               sub="I make APIs, bots, and CLI apps!",
+                               topper="Recent posts")
 
     @cherrypy.expose
     def about(self):
@@ -79,7 +61,7 @@ class Website(object):
     @cherrypy.expose
     def admin(self):
         template = env.get_template("html/admin.html")
-        return template.render()
+        return template.render(admin=True)
 
     @cherrypy.expose
     def post(self, title, text):
@@ -95,6 +77,17 @@ class Website(object):
         template = env.get_template("html/blogpost.html")
         post = Post.get(id=id)
         return template.render(p=post)
+
+    @cherrypy.expose
+    def blog(self):
+        template = env.get_template("html/index.html")
+        blog = Post.select().order_by(Post.date.asc())
+        motdJson = requests.get("https://xkcd.com/info.0.json").json()
+        motd = motdJson.get("img")
+        return template.render(
+            blg=True,
+            blog=blog,
+            motd=motd)
 
 
 load_dotenv()
@@ -115,7 +108,7 @@ if __name__ == '__main__':
             'tools.auth_digest.on': True,
             'tools.auth_digest.realm': 'localhost',
             'tools.auth_digest.get_ha1': auth_digest.get_ha1_dict_plain(USERS),
-            'tools.auth_digest.key': 'a565c27146791cfb',
+            'tools.auth_digest.key': os.environ['DIGESTKEY'],
             'tools.auth_digest.accept_charset': 'UTF-8',
         },
         '/post': {

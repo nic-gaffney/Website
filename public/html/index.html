@@ -1,9 +1,10 @@
 {% extends "templates/base.html" %}
-{% block head %}Gaffclant{% endblock %}
-{% block sub %}I make APIs, bots, and CLI apps!{% endblock %}
+{% block head %}{{ title }}{% endblock %}
+{% block sub %}{{ sub }}{% endblock %}
 {% block content %}
 <div class="main-index">
     <div class="post-wrapper">
+        <h1>{{ topper }}</h1>
         {% for b in blog %}
         <div class="post">
             <div class="post-header">

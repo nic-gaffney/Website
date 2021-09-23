@@ -2,10 +2,13 @@
 {% block head %}Post a blog{% endblock %}
 {% block sub %}Fill out the form to post the blog{% endblock %}
 {% block content %}
-<form method="get" action="post">
-    <input type="text" name="title" placeholder="Title"/>
-    <input type="text" name="text" placeholder="text"/>
-    <button type="submit">Submit</button>
-</form>
+<div class="makepost">
+    <form method="get" action="post">
+        <input class="text-area" type="text" name="title" placeholder="Title"/><br>
+        <textarea class="text-area" rows="5" cols="60" name="text" placeholder="Enter text"></textarea>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
 
 {% endblock %}

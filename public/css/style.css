@@ -100,3 +100,16 @@ footer li a:hover {
 
     margin: 2rem;
 }
+
+.makepost {
+    display: box;
+    border: 2px solid black;
+    widht: 75%;
+    margin: 1rem;
+}
+
+.text-area {
+    margin: 1rem;
+    width: 75%;
+    resize: none;
+}
