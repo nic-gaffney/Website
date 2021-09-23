@@ -1,0 +1,11 @@
+{% extends "templates/base.html" %}
+{% block head %}Post a blog{% endblock %}
+{% block sub %}Fill out the form to post the blog{% endblock %}
+{% block content %}
+<form method="get" action="post">
+    <input type="text" name="title" placeholder="Title"/>
+    <input type="text" name="text" placeholder="text"/>
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock %}

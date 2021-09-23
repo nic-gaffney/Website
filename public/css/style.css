@@ -3,6 +3,9 @@
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: #444;
+
+    padding: 0;
+    margin: 0;
 }
 
 footer {
@@ -59,8 +62,41 @@ footer li a:hover {
 }
 
 .header {
+    margin: 0;
+    padding: 0;
     font-size: 40px;
     text-align: center;
     color: #fff;
     background-image: url("/static/images/header.png");
+}
+
+.post-wrapper {
+    width: 50%;
+    padding: 1rem;
+}
+
+.post {
+    display: block;
+    background-color: #f2690e;
+    border-radius: 15px 50px;
+    padding: 10px;
+    margin: 15px;
+
+}
+
+.post-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-index {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.motd {
+
+    margin: 2rem;
 }

@@ -2,5 +2,25 @@
 {% block head %}Gaffclant{% endblock %}
 {% block sub %}I make APIs, bots, and CLI apps!{% endblock %}
 {% block content %}
-{% insert blog[0] %}
+<div class="main-index">
+    <div class="post-wrapper">
+        {% for b in blog %}
+        <div class="post">
+            <div class="post-header">
+                <h1><a href={{"blogpost?id="+ b.id|string }}>{{ b.title }}</a></h1>
+                <p>{{ b.date.date() }}</p>
+            </div>
+            <p>
+                {{ b.text[:50] }}...
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="motd">
+        <img src={{ motd }}>
+        <p>All comics of the day are from <a style="color: black;" href="https://xkcd.com/">xkcd</a></p>
+    </div>
+
+</div>
+
 {% endblock %}

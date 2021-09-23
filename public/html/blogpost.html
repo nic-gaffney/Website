@@ -1,0 +1,8 @@
+{% extends "templates/base.html" %}
+{% block head %}{{ p.title }}{% endblock %}
+{% block sub %}{{ p.date }}{% endblock %}
+{% block content %}
+<p>
+    {{ p.text }}
+</p>
+{% endblock %}
