@@ -11,15 +11,17 @@
                 <h1><a href={{"blogpost?id="+ b.id|string }}>{{ b.title }}</a></h1>
                 <p>{{ b.date.date() }}</p>
             </div>
-            <p>
-                {{ b.text[:50] }}...
-            </p>
+            <div>
+                {% autoescape off %}
+                {{ re.sub("<[^>]*>", "", b.text)[:100] }}...
+                {% endautoescape %}
+            </div>
         </div>
         {% endfor %}
     </div>
     <div class="motd">
+      <h1>Comic of the day from <a style="color: black;" href="https://xkcd.com/">XKCD</a></h1>
         <img src={{ motd }}>
-        <p>All comics of the day are from <a style="color: black;" href="https://xkcd.com/">xkcd</a></p>
     </div>
 
 </div>

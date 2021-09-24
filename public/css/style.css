@@ -58,10 +58,12 @@ nav li a:hover {
 }
 
 footer li a:hover {
+
   color: #444;
 }
 
 .header {
+
     margin: 0;
     padding: 0;
     font-size: 40px;
@@ -76,12 +78,22 @@ footer li a:hover {
 }
 
 .post {
-    display: block;
-    background-color: #f2690e;
-    border-radius: 15px 50px;
+    border-left-width: 5px;
+    border-left-style: solid;
+    border-left-color: #f2690e;
+    border-radius: 5px;
+    background-color: #666666;
     padding: 10px;
     margin: 15px;
+    transition: background-color 0.3s;
 
+    display: flex;
+    flex-direction: column;
+}
+
+.post:hover {
+    transition-timing-function: ease;
+    background-color: #777777;
 }
 
 .post-header {
@@ -102,9 +114,10 @@ footer li a:hover {
 }
 
 .makepost {
+    text-align: center;
     display: box;
     border: 2px solid black;
-    widht: 75%;
+    width: 75%;
     margin: 1rem;
 }
 
@@ -112,4 +125,18 @@ footer li a:hover {
     margin: 1rem;
     width: 75%;
     resize: none;
+}
+
+.blog-content {
+    color: white;
+    margin: 2rem;
+    padding: 1rem;
+    display: block;
+    border-radius: 15px;
+    background-color: #333;
+    box-shadow: 10px 10px 5px black;
+}
+
+.post-preview {
+
 }

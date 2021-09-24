@@ -2,7 +2,11 @@
 {% block head %}{{ p.title }}{% endblock %}
 {% block sub %}{{ p.date.date() }}{% endblock %}
 {% block content %}
-<p>
+<div class="blog-content">
+    {% autoescape off %}
+    <script>hljs.highlightAll();</script>
     {{ p.text }}
-</p>
+    {% endautoescape %}
+
+</div>
 {% endblock %}

@@ -2,6 +2,7 @@
 import datetime
 import json
 import os.path
+import re
 
 import cherrypy
 import requests
@@ -47,6 +48,7 @@ class Website(object):
         motdJson = requests.get("https://xkcd.com/info.0.json").json()
         motd = motdJson.get("img")
         return template.render(index=True,
+                               re=re,
                                blog=preview,
                                motd=motd,
                                title="Gaffclant",
@@ -84,10 +86,10 @@ class Website(object):
         blog = Post.select().order_by(Post.date.asc())
         motdJson = requests.get("https://xkcd.com/info.0.json").json()
         motd = motdJson.get("img")
-        return template.render(
-            blg=True,
-            blog=blog,
-            motd=motd)
+        return template.render(re=re,
+                               blg=True,
+                               blog=blog,
+                               motd=motd)
 
 
 load_dotenv()
@@ -119,4 +121,4 @@ if __name__ == '__main__':
             'tools.auth_digest.accept_charset': 'UTF-8',
         }
     }
-cherrypy.quickstart(Website(), '/', conf)
+    cherrypy.quickstart(Website(), '/', conf)
