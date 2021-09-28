@@ -1,0 +1,7 @@
+cherrypy
+datetime
+requests
+dotenv
+jinja2
+peewee
+
