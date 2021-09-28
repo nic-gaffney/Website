@@ -13,7 +13,9 @@ from peewee import *
 from playhouse.signals import pre_save
 
 env = Environment(loader=FileSystemLoader('public'), autoescape=select_autoescape())
-db = SqliteDatabase('blog_database.db')
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+db_path = os.path.join(BASE_DIR, "blog_database.db")
+db = SqliteDatabase(db_path)
 
 
 class BaseModel(Model):
