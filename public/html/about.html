@@ -2,8 +2,17 @@
 {% block head %}About Me{% endblock %}
 {% block sub %}I use Arch Linux and have the memory of a goldfish!{% endblock %}
 {% block content %}
-<p>
-    I am a programmer who uses Arch Linux (had to say it...). I can program in Python, Java, Kotlin, and a little
-    bit of bash here and there.
-</p>
+<div class="blog-content">
+    {% autoescape off %}
+    <script>hljs.highlightAll();</script>
+    <p>Welcome to my site! I do indeed have a name, but you can call me gafflcant. I use Arch Linux with DWM and I Enjoy
+        programming all sorts of stuff. I can make Discord bots, websites (much like this one), API's, webscrapers and
+        all sorts of stuff! If you have any questions about me, what I do, or if you want me to make something for you,
+        please contact me using the button on the navbar! I try to check my email on a daily basis, so if I miss your
+        email just wait a day or two, I should be able to get back.</p>
+    <p><b>Do not hesitate to ask me to make something for you! Prices are negotiable and I would love to make something
+        for you!</b></p>
+    {% endautoescape %}
+
+</div>
 {% endblock %}
