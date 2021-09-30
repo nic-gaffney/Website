@@ -38,8 +38,7 @@ def on_save_handler(model_class, instance, created):
 
 db.connect()
 
-if not db.get_tables([Post]):
-    db.create_tables([Post])
+db.create_tables([Post])
 
 
 class Website(object):
