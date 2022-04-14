@@ -1,13 +1,12 @@
 {% extends "templates/base.html" %}
 {% block head %}Post a blog{% endblock %}
-{% block sub %}Fill out the form in HTML to post the blog{% endblock %}
+{% block sub %}Fill out the form in Markdown to post the blog{% endblock %}
 {% block content %}
 <div class="makepost">
     <form method="get" action="post">
-        <script>hljs.highlightAll(style="base16/dracula");</script>
         <input class="text-area" type="text" name="title" placeholder="Title"/><br>
         <textarea class="text-area" rows="50" cols="60" name="text" placeholder="Enter text"></textarea><br>
-        <button type="submit">Submit</button>
+        <button id="sub" type="submit">Submit</button>
     </form>
 </div>
 

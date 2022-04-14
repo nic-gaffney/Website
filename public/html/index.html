@@ -8,19 +8,19 @@
         {% for b in blog %}
         <div class="post">
             <div class="post-header">
-                <h1><a href={{"blogpost?id="+ b.id|string }}>{{ b.title }}</a></h1>
+                <h1><a id="post-preview" href={{"blogpost?id="+ b.id|string }}>{{ b.title }}</a></h1>
                 <p>{{ b.date.date() }}</p>
             </div>
             <div>
                 {% autoescape off %}
-                {{ re.sub("<[^>]*>", "", b.text)[:100] }}...
+                {{ re.sub("<[^>]*>", "", markdown.markdown(b.text))[:100] }}...
                 {% endautoescape %}
             </div>
         </div>
         {% endfor %}
     </div>
     <div class="motd">
-      <h1>Comic of the day from <a style="color: black;" href="https://xkcd.com/">XKCD</a></h1>
+      <h1>Comic of the day from <a id="motd-link" href="https://xkcd.com/">XKCD</a></h1>
         <img src={{ motd }}>
     </div>
 

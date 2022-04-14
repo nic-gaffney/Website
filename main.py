@@ -4,6 +4,7 @@ import json
 import os.path
 import re
 
+import markdown
 import cherrypy
 import requests
 from cherrypy.lib import auth_digest
@@ -52,9 +53,10 @@ class Website(object):
                                re=re,
                                blog=preview,
                                motd=motd,
-                               title="Gaffclant",
+                               title="Nicolas Gaffney",
                                sub="I make APIs, bots, and CLI apps!",
-                               topper="Recent posts")
+                               topper="Recent posts",
+                               markdown=markdown)
 
     @cherrypy.expose
     def about(self):
@@ -79,7 +81,9 @@ class Website(object):
     def blogpost(self, id):
         template = env.get_template("html/blogpost.html")
         post = Post.get(id=id)
-        return template.render(p=post)
+        return template.render(p=post,
+                               markdown=markdown,
+                               re=re)
 
     @cherrypy.expose
     def blog(self):
@@ -90,7 +94,14 @@ class Website(object):
         return template.render(re=re,
                                blg=True,
                                blog=blog,
-                               motd=motd)
+                               motd=motd,
+                               title="Posts",
+                               markdown=markdown)
+
+    @cherrypy.expose
+    def portfolio(self):
+        template = env.get_template("html/portfolio.html")
+        return template.render(port=True)
 
 
 load_dotenv()

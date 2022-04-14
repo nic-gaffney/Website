@@ -4,8 +4,7 @@
 {% block content %}
 <div class="blog-content">
     {% autoescape off %}
-    <script>hljs.highlightAll();</script>
-    {{ p.text }}
+    {{ re.sub("<[/]*script>", "", markdown.markdown(p.text)) }}
     {% endautoescape %}
 
 </div>

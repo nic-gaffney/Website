@@ -1,0 +1,33 @@
+{% extends "templates/base.html" %}
+{% block head %}My Portfolio{% endblock %}
+{% block sub %}Nicolas Gaffney{% endblock %}
+{% block content %}
+<div class="portfolio">
+    <div class="blog-content">
+        <h3>For a summary on who I am and what my goals are, visit the <a href="/about">about me</a> page.</h3>
+        <h1>My projects</h1>
+        <p><b>Here is a small list of projects I am most proud of</b></p>
+        <h2>This website!</h2>
+        <p>Here is a snippet of the backend of the website. The whole code can be found at <a href="https://github.com/Gaffclant/Website"></a></p>
+        <pre>
+<code>@cherrypy.expose
+def index(self):
+    preview = Post.select().order_by(Post.date.desc()).limit(3)
+    template = env.get_template("html/index.html")
+    motdJson = requests.get("https://xkcd.com/info.0.json").json()
+    motd = motdJson.get("img")
+    return template.render(index=True,
+                           re=re,
+                           blog=preview,
+                           motd=motd,
+                           title="Nicolas Gaffney",
+                           sub="I make APIs, bots, and CLI apps!",
+                           topper="Recent posts",
+                           markdown=markdown)
+
+        </code>
+        </pre>
+
+    </div>
+</div>
+{% endblock %}
