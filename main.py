@@ -111,9 +111,9 @@ USERS = json.loads(USERS)
 if __name__ == '__main__':
     hostmap = {
         'ngaffney.netlify.app:8080': '/',
-    }
+    },
     conf = {
-        'request.dispatch': cherrypy.dispatch.VirtualHost(**hostmap)
+        'request.dispatch': cherrypy.dispatch.VirtualHost(**hostmap),
         'global': {
             'server.socket_port': 8080,
             'tools.proxy.on': True,
