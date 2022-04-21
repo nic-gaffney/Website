@@ -1,1 +1,1 @@
-web: python main.py
+web: supervisord -c supervisord.conf; supervisorctl update
