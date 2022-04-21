@@ -139,4 +139,4 @@ conf={
             'tools.auth_digest.accept_charset': 'UTF-8',
         }
     }
-await cherrypy.quickstart(Website(), '/', conf)
+cherrypy.quickstart(Website(), '/', conf)
