@@ -109,16 +109,13 @@ USERS = os.environ['USERS']
 USERS = json.loads(USERS)
 
 if __name__ == '__main__':
-    hostmap = {
-        'ngaffney.netlify.app:8080': '/',
-        'ngaffney.netlify.app:8081': '/',
-    }
     conf = {
         'request.dispatch': cherrypy.dispatch.VirtualHost(**hostmap),
         'global': {
             'server.socket_port': 8080,
-            'tools.proxy.on': True,
-            'tools.proxy.base': 'http://ngaffney.netlify.app'
+            'engine.autoreload': False,
+            'log.access_file': './access.log',
+            'log.error_file': './error.log
         },
         '/': {
             'tools.sessions.on': True,
@@ -143,4 +140,4 @@ if __name__ == '__main__':
             'tools.auth_digest.accept_charset': 'UTF-8',
         }
     }
-    cherrypy.quickstart(Website(), '/', {'/': conf})
+    cherrypy.quickstart(Website(), '/',conf)
