@@ -108,14 +108,13 @@ load_dotenv()
 USERS = os.environ['USERS']
 USERS = json.loads(USERS)
 
-if __name__ == '__main__':
-    conf = {
-        'request.dispatch': cherrypy.dispatch.VirtualHost(**hostmap),
+
+conf={
         'global': {
             'server.socket_port': 8080,
             'engine.autoreload': False,
             'log.access_file': './access.log',
-            'log.error_file': './error.log
+            'log.error_file': './error.log'
         },
         '/': {
             'tools.sessions.on': True,
@@ -140,4 +139,4 @@ if __name__ == '__main__':
             'tools.auth_digest.accept_charset': 'UTF-8',
         }
     }
-    cherrypy.quickstart(Website(), '/',conf)
+cherrypy.quickstart(Website(), '/', conf)
