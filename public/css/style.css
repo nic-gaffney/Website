@@ -168,6 +168,64 @@ footer li a:hover {
     background-color: #96CDFB;
 }
 
-.portfolio{
-    margin: 1rem;
+.portfolio a{
+    color: #89DCEB;
+}
+
+
+#me{
+    width: 210px;
+    height: 280px;
+    padding: 1rem;
+    padding-right: 5rem;
+
+}
+
+#index-image{
+    width: 500px;
+    height: 250px;
+    padding: 1rem;
+}
+
+.weatherbox{
+    width: 857px;
+    height: 369px;
+    padding: 1rem;
+}
+
+.bot{
+    padding: 1rem;
+}
+
+#box-img{
+    width: 300px;
+    height: 300px;
+}
+
+.item1{ grid-area: main;}
+.item2{ grid-area: me;}
+.item3{ grid-area: code;}
+.item4{ grid-area: code-image;}
+.item5{ grid-area: weather;}
+.item6{ grid-area: schem;}
+.item7{ grid-area: box}
+.item8{ grid-area: wtrbx;}
+.item9{ grid-area: wtrbx-code;}
+.item10{ grid-area: bot;}
+.item11{ grid-area: bot-code}
+.item12{ grid-area: bot-img;}
+.grid{
+    align-grid: center;
+    display: grid;
+    grid-template-areas:
+        'main main main me'
+        'code code-image code-image code-image'
+        'weather weather weather weather'
+        'schem schem box box'
+        'wtrbx wtrbx wtrbx wtrbx'
+        'wtrbx-code wtrbx-code wtrbx-code wtrbx-code'
+        'bot bot bot-img bot-img'
+        'bot-code bot-code bot-img bot-img';
+
+
 }

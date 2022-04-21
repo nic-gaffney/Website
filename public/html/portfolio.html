@@ -2,15 +2,46 @@
 {% block head %}My Portfolio{% endblock %}
 {% block sub %}Nicolas Gaffney{% endblock %}
 {% block content %}
+<script>hljs.highlightAll();</script>
 <div class="portfolio">
     <div class="blog-content">
-        <h3>For a summary on who I am and what my goals are, visit the <a href="/about">about me</a> page.</h3>
-        <h1>My projects</h1>
-        <p><b>Here is a small list of projects I am most proud of</b></p>
-        <h2>This website!</h2>
-        <p>Here is a snippet of the backend of the website. The whole code can be found at <a href="https://github.com/Gaffclant/Website"></a></p>
-        <pre>
-<code>@cherrypy.expose
+        <div class="grid">
+            <div class="item1">
+                <h1>Who am I?</h1>
+                <p>
+                    Welcome to my site! My name is Nicolas Gaffney, but you can call me Nic.
+                    I am currently a Junior in highschool, and I am enrolled in computer science and enginnering classes.
+                    I use Arch Linux with DWM as my daily driver, and I enjoy customizing my system to make it look pretty.
+                    I can make Discord bots, websites (much like this one), API's, webscrapers and much more!
+                    In my free time, I spend time programming and playing video games.
+                </p>
+                <h2>What are my goals?</h2>
+                <p>
+                    In the future, I hope to enroll into UT Austin and major in computer science or aerospace engineering.
+                    After I graduate college, I want to get a job at a space agency, hopefully SpaceX.
+                    My ideal position would be a computer scientist or aerospace engineer.
+                    In general I want a job involving computers and space.
+                </p>
+                <br>
+                <h1>My projects</h1>
+                <p><b>Here is a small list of projects I am most proud of</b></p>
+                <h2>This website!</h2>
+                <p>
+                    Here is a snippet of the backend of the website. To make this website, I used cherrypy as a backend and then Jinja to connect
+                    the backend to the frontend with templating. The templating allows for me to compile markdown into
+                    html in the code for the post instead of running a bunch of functions in the backend. The posts for
+                    the blog are stored in a database file run by peewee. When making this website, I ran into issues
+                    with the blog posts able to run javascript, so I had to use regular expressions to delete every
+                    script tag that showed up in a post.
+                </p>
+
+            </div>
+            <div class="item2">
+                <img id="me" src="/static/images/Me.jpg">
+            </div>
+            <div class="item3">
+                <pre>
+<code class="language-python">@cherrypy.expose
 def index(self):
     preview = Post.select().order_by(Post.date.desc()).limit(3)
     template = env.get_template("html/index.html")
@@ -23,10 +54,106 @@ def index(self):
                            title="Nicolas Gaffney",
                            sub="I make APIs, bots, and CLI apps!",
                            topper="Recent posts",
-                           markdown=markdown)
-
-        </code>
+                           markdown=markdown)</code>
         </pre>
+            </div>
+            <div class="item4">
+                <img id="index-image" src="/static/images/index.png">
+                <p>
+                    This is the page that the code is responsible for managing!
+                </p>
+            </div>
+            <div class="item5">
+                <h2>My weather box!</h2>
+                <p>
+                    I designed and constructed a device that shows data on the weather, involving temperature, humidity,
+                    barometric pressure, and then altitude. However, altitude is a guess made based on the barometric pressure, so
+                    it is bound to be inaccurate. It also shows data on the air, which involved Total Volatile Organic Compound
+                    (TVOC) and C02 levels. Aside from all the weather data, it can also show the correct time and date by
+                    using a small coin battery to keep a clock alive. All this is controlled by an ItsyBitsy-RP2040, and
+                    it runs off of a custom CircuitPy program that I wrote. All this is displayed by a monochrome OLED
+                    controlled via SPI.
+                </p>
+            </div>
+            <div class="item6">
+                <img class="weatherbox" src="/static/images/smartwatch_schem.png">
+            </div>
+            <div class="item7">
+                <img id="box-img" src="/static/images/smartwatch.jpg">
+            </div>
+            <div class="item8">
+                <p>
+                    Here are the schematic designs for my weatherbox. There is a mistake in the PCB that I did fix when it arrived.
+                    That mistake was that there is a hole on the positive line that connects the RP2040 to the OLED.
+                    Here is some code from the RP2040:
+                </p>
+            </div>
+            <div class="item9">
+                <pre>
+<code class="language-python">spi = board.SPI()
+screen_cs = board.D12
+screen_dc = board.D11
+bme_cs = digitalio.DigitalInOut(board.D10)
+bme280 = adafruit_bme280.Adafruit_BME280_SPI(spi, bme_cs)
+
+# Make the display
+display_bus = displayio.FourWire(spi, command=screen_dc, chip_select=screen_cs, baudrate=1000000, reset=board.D13)
+display = adafruit_ssd1325.SSD1325(display_bus, width=WIDTH, height=HEIGHT)
+display.auto_refresh = True
+# Display splash screen
+splash = displayio.Group()
+display.show(splash)</code>
+                </pre>
+            </div>
+            <div class="item10">
+                <h2>Reddit -> Discord bot</h2>
+                <p>
+                    I made a discord bot that sends posts from reddit at the request from people in the discord server.
+                    The bot uses the reddit API and the discord API together. When a user makes a request, the bot
+                    gets a post from the specified subreddit and sends it. To make it faster, the bot stores 500 posts
+                    in memory every 24 hours, so that when a user makes a request the bot can instantly send the post.
+                    Here is the code used to collect 500 posts, and also an image of the bot posting a meme.
+                </p>
+            </div>
+            <div class="item11">
+                <pre>
+<code class="language-python bot">def my_job():
+    global url_list
+    global title_list
+    global urls
+    global titles
+    sub_list = [
+        'aww',
+        'memes',
+        'HistoryMemes',
+        'PrequelMemes',
+        'funny'
+    ]
+    print('Ready to collect posts')
+    urls = {}
+    titles = {}
+    for sub in sub_list:
+        subreddit = reddit.subreddit(sub)
+        top_subreddit = subreddit.new(limit=500)
+        for submission in subreddit.new(limit=500):
+            try:
+                urls["url_{}".format(sub)].append(submission.url)
+                titles["title_{}".format(sub)].append(submission.title)
+            except Exception as e:
+                print(e)
+                urls["url_{}".format(sub)] = []
+                titles["title_{}".format(sub)] = []</code>
+                </pre>
+            </div>
+            <div class="item12">
+                <img class="bot" src="/static/images/bot.png">
+            </div>
+        </div>
+
+
+
+
+
 
     </div>
 </div>
