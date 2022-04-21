@@ -111,7 +111,7 @@ USERS = json.loads(USERS)
 
 conf={
         'global': {
-            'server.socket_port': 8080,
+            'server.socket_port': os.environ['PORT'],
             'engine.autoreload': False,
             'log.access_file': './access.log',
             'log.error_file': './error.log'
