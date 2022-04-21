@@ -112,7 +112,7 @@ if __name__ == '__main__':
     hostmap = {
         'ngaffney.netlify.app:8080': '/',
         'ngaffney.netlify.app:8081': '/',
-    },
+    }
     conf = {
         'request.dispatch': cherrypy.dispatch.VirtualHost(**hostmap),
         'global': {
