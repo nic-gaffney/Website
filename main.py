@@ -1,4 +1,4 @@
-# Source code for my website gaffclant.com
+# Source code for my website nicgaffney.net
 import datetime
 import json
 import os.path
