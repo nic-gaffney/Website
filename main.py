@@ -142,4 +142,4 @@ if __name__ == '__main__':
             'tools.auth_digest.accept_charset': 'UTF-8',
         }
     }
-    cherrypy.quickstart(Website(), '/', {'/': config})
+    cherrypy.quickstart(Website(), '/', {'/': conf})
