@@ -1,7 +1,7 @@
-cherrypy~=18.6.1
-datetime~=4.4
-requests~=2.27.1
-python-dotenv~=0.20.0
-jinja2~=3.1.1
-peewee~=3.14.10
-Markdown~=3.3.6
+cherrypy
+datetime
+requests
+python-dotenv
+jinja2
+peewee
+Markdown
